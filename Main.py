@@ -116,7 +116,7 @@ class Evaluate:
         else:
           self.stack[self.top]=int(self.stack[self.top])^int(secoperator)
     
-    return self.stack[self.top]
+    return int(self.stack[self.top])
 
 
 # Do not change the following code
