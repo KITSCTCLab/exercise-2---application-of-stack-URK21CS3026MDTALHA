@@ -93,7 +93,7 @@ class Evaluate:
     Returns:
       The result of evaluated postfix expression.
     """
-
+    flag=0
     for i in expression:
 
       if(not(i=="-" or i=="+" or i=="*" or i=="/" or i=="^")):
@@ -111,10 +111,14 @@ class Evaluate:
         elif(operator=="*"):
           self.stack[self.top]=int(self.stack[self.top])*int(secoperator)
         elif(operator=="/"):
+          flag=1
           self.stack[self.top]=int(self.stack[self.top])/int(secoperator)
         else:
           self.stack[self.top]=int(self.stack[self.top])^int(secoperator)
-    return self.stack[self.top]
+    if(flag==1):
+      return float(self.stack[self.top])
+    else:
+      return self.stack[self.top]
 
 
 # Do not change the following code
