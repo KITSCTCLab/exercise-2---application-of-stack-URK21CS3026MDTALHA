@@ -115,10 +115,8 @@ class Evaluate:
           self.stack[self.top]=int(self.stack[self.top])/int(secoperator)
         else:
           self.stack[self.top]=int(self.stack[self.top])^int(secoperator)
-    if(flag==1):
-      return float(self.stack[self.top])
-    else:
-      return self.stack[self.top]
+    
+    return self.stack[self.top]
 
 
 # Do not change the following code
