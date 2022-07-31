@@ -111,7 +111,7 @@ class Evaluate:
         elif(operator=="*"):
           self.stack[self.top]=int(self.stack[self.top])*int(secoperator)
         elif(operator=="/"):
-          self.stack[self.top]=int(self.stack[top])/int(secoperator)
+          self.stack[self.top]=int(self.stack[self.top])/int(secoperator)
         else:
           self.stack[self.top]=int(self.stack[self.top])^int(secoperator)
     return self.stack[self.top]
