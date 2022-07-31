@@ -17,7 +17,7 @@ class Evaluate:
     """
     self.top = -1
     self.size_of_stack = size
-    self.stack = []
+    self.stack = [None]*size
 
 
   def isEmpty(self):
