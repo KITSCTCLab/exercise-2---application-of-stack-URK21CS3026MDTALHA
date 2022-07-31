@@ -24,7 +24,7 @@ class Evaluate:
     Returns:
       True if it is empty, else returns False.
     """
-      # Write your code here
+    return (self.top==-1)
 
 
   def pop(self):
@@ -33,7 +33,11 @@ class Evaluate:
     Returns:
       The data which is popped out if the stack is not empty.
     """
-    # Write your code here
+    if not self.isEmpty():
+      
+      k=self.stack[self.top]
+      self.top-=1
+    return k
 
 
   def push(self, operand):
@@ -42,7 +46,8 @@ class Evaluate:
     Arguments:
       operand: The operand to be pushed.
     """
-    # Write your code here
+    self.top+=1
+    self.stack[self.top]=operand
 
 
   def validate_postfix_expression(self, expression):
@@ -53,7 +58,28 @@ class Evaluate:
     Returns:
       True if the expression is valid, else returns False.
     """
-    # Write your code here
+    operatorcon=0
+    operandcon=0
+    flag=0
+    for i in expression:
+      
+      if(not(i=="-" or i=="+" or i=="*" or i=="/" or i=="^")):
+        
+        k=int(i)
+      if(i=="-" or i=="+" or i=="*" or i=="/" or i=="^"):
+        
+        operatorcon+=1
+        flag=1
+      elif(isinstance(k,int)):    
+        operandcon+=1
+        flag=1
+      else:
+        flag=0
+        break
+    if(flag==1 and operandcon==(operatorcon+1)):
+      return True
+    else:
+      return False
 
 
   def evaluate_postfix_expression(self, expression):
@@ -64,7 +90,28 @@ class Evaluate:
     Returns:
       The result of evaluated postfix expression.
     """
-    # Write your code here
+    
+    for i in expression:
+      
+      if(not(i=="-" or i=="+" or i=="*" or i=="/" or i=="^")):
+      
+        self.push(i)
+      else:
+        self.push(i)
+        operator=self.pop()
+        secoperator=self.pop()
+        if(operator=="+"):
+          
+          self.stack[self.top]=int(self.stack[self.top])+int(secoperator)
+        elif(operator=="-"):
+          self.stack[self.top]=int(self.stack[self.top])-int(secoperator)
+        elif(operator=="*"):
+          self.stack[self.top]=int(self.stack[self.top])*int(secoperator)
+        elif(operator=="/"):
+          self.stack[self.top]=int(self.stack[top])/int(secoperator)
+        else:
+          self.stack[self.top]=int(self.stack[self.top])^int(secoperator)
+    return self.stack[self.top]
 
 
 # Do not change the following code
